@@ -2,16 +2,41 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
+        <title>{% block title %}Site de l'organisation{% endblock %}</title>
+        {% block metadescription %}
+            <meta name="description" content="Description du site de l'organisation">
         {% endblock %}
+        
+        {# Affichage du favicon du site #}
+        
+        {# Balise meta viewport #}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+        {# Ionicons #}
+            <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        
+        {# Lien vers les feuilles de style CSS #}
+        <link rel="stylesheet" href="{{asset('/css/general.css')}}">
+        <link rel="stylesheet" href="{{asset('/css/style.css')}}">
+        {% block stylesheets %}{% endblock %}
     </head>
+    
     <body>
+        {# Inclusion du header #}
+        {% include "partials/_header.html.twig" %}
+        
+        {# Affichage du body #}
         {% block body %}{% endblock %}
+        
+        {# Affichage des messages flash #}
+        
+        {# Inclusion du footer #}
+       
+        {# Lien vers les scripts javascript #}
+        {% block javascripts %}
+            {# Dropdown de navigation #}
+            <script src="{{ asset('js/dropdown.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
