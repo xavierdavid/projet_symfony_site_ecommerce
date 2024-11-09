@@ -1,7 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil - Symfony E-commerce{% endblock %}
+{% block title %}Accueil - E-commerce{% endblock %}
 
 {% block body %}
+  {# Inclusion du hero #}
+  {% include "partials/_hero.html.twig" %}
+  {# Inclusion du caroussel #}
+  {% include "partials/_carousel.html.twig" %}
 
 {% endblock %}

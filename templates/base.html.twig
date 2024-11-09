@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Site de l'organisation{% endblock %}</title>
+        <title>{% block title %}Bienvenue sur le site e-commerce{% endblock %}</title>
         {% block metadescription %}
             <meta name="description" content="Description du site de l'organisation">
         {% endblock %}
@@ -36,7 +36,9 @@
         {# Lien vers les scripts javascript #}
         {% block javascripts %}
             {# Dropdown de navigation #}
-            <script src="{{ asset('js/dropdown.js') }}"></script>
+            
+            {# Caroussel #}
+            <script src="{{ asset('js/carousel.js') }}"></script>
         {% endblock %}
     </body>
 </html>
