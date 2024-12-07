@@ -1,0 +1,10 @@
+{# Affichage des messages flash #}
+<section class="flash-container">
+    {% for item, messages in app.flashes %}
+        <div class="alert alert-{{item}}">
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</section>

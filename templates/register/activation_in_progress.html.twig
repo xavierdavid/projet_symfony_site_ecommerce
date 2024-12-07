@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Activation en cours{% endblock %}
+
+{% block body %}
+
+  <section class="section-hero">
+    <div class="hero-container">
+      <div class="hero-text-box">
+        <h1 class="heading-primary">Activation de votre compte ...</h1>
+        <p class="hero-description">Bonjour {{user.firstname}}, plus qu'une dernière étape pour créer votre compte ! Veuillez cliquer sur le lien qui vient de vous être envoyé par email à l'adresse {{user.email}} afin d'activer votre compte. Pensez à vérifier dans vos spams !</p>
+    </div>
+    <div>
+      <ul class="authentification-nav-list">
+        <li class="authentification-list">
+            <ion-icon class="icon icon-secondary" name="help-outline"></ion-icon>
+            <span>
+                <a href="{{path('app_register_new_activation_email', {'id': user.id})}}">Renvoyer l'email d'activation ?</a>
+            </span>
+        </li>
+      </ul> 
+    </div>
+  </div> 
+</section>
+{% endblock %}

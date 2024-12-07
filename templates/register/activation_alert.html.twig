@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vérification de l'email{% endblock %}
+
+{% block body %}
+
+  <section class="section-hero">
+      <div class="hero-container">
+        <div class="hero-text-box">
+          <h1 class="heading-primary">Activation de votre compte ...</h1>
+          <p class="hero-description">{{user.firstname|capitalize}}, votre compte utilisateur n'est pas encore activé. Veuillez confirmer votre inscription en cliquant sur le lien d'activation qui vous a été envoyé par email à l'adresse {{user.email}} afin d'activer votre compte. Pensez à vérifier dans vos spams !</p>
+      </div>
+      <div>
+        <ul class="authentification-nav-list">
+          <li class="authentification-list">
+              <ion-icon class="icon icon-secondary" name="help-outline"></ion-icon>
+              <span>
+                  <a href="{{path('app_register_new_activation_email', {'id': user.id})}}">Renvoyer l'email d'activation ?</a>
+              </span>
+          </li>
+        </ul> 
+      </div>
+    </div> 
+  </section>
+{% endblock %}

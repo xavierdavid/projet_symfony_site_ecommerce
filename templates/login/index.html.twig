@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+    
+    <section class="section-login">
+        <div class="login-container form-wrap">
+            <div class="form-header">
+                <h1 class="heading-primary">Se connecter</h1>
+            </div> 
+            <p class="authentification-text">
+                Saisir vos identifiants de connexion pour vous authentifier ...
+            </p> 
+            {# Message d'erreur d'authentification #}
+            {% if error %}
+                <p class='form-error'>{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+             {% endif %}
+            {# Formulaire de login #}
+            <form action="{{path('app_login')}}", method="post" class="authentification-form">
+                <div class="form-row">
+                    <label for="username">Email : </label>
+                    <input type="text" id="username" name="_username" value="{{last_username}}" required>
+                    <label for="password">Mot de passe : </label>
+                    <input type="password" id="password" name="_password" required>
+                    {# Protection CSRF #}
+                    <input type="hidden" name="_csrf_token" value={{csrf_token('authenticate')}}>
+                </div>
+                <br>
+                <div class="form-footer">
+                    <button class="btn btn--form" type="submit">Connexion</button>
+                </div>
+            </form>
+        </div>
+        <div class="form-footer">
+            <ul class="authentification-nav-list">
+                {# Mot de passe oublié #}
+                <li class="authentification-list">
+                    <ion-icon class="icon icon-secondary" name="help-outline"></ion-icon>
+                    <span>
+                        <a href="#">Mot de passe oublié ?</a>
+                    </span>
+                </li>
+                {# Pas encore de compte #}
+                <li class="authentification-list">
+                    <ion-icon class="icon icon-secondary" name="person-add-outline"></ion-icon>
+                    <span>
+                        <a href="{{path('app_register')}}">Pas encore de compte ?</a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </section>
+    
+    
+{% endblock %}

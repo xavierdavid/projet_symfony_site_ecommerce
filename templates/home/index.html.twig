@@ -3,9 +3,16 @@
 {% block title %}Accueil - E-commerce{% endblock %}
 
 {% block body %}
+
   {# Inclusion du hero #}
   {% include "partials/_hero.html.twig" %}
   {# Inclusion du caroussel #}
   {% include "partials/_carousel.html.twig" %}
+
+  {# Lien vers les scripts javascript #}
+  {% block javascripts %}
+    {# Caroussel #}
+    <script src="{{ asset('js/carousel.js') }}"></script>
+  {% endblock %}
 
 {% endblock %}

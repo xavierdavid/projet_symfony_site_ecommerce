@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+
+    <section class="section-register">
+        <div class="register-container form-wrap shake">
+            <div class="form-header">
+                <h1 class="heading-primary">Créer un compte</h1>
+            </div>  
+            {{form_start(formView)}}
+            <div class="form-row">
+                <div class="icon-input-container">
+                    {{form_row(formView.firstname)}}
+                    <ion-icon name="checkmark-circle-outline" class="input-success-icon"></ion-icon>
+                    <ion-icon name="alert-circle-outline" class="input-alert-icon"></ion-icon>
+                    <div class="input-error-msg">
+                        Votre prénom doit contenir au moins 3 caractères
+                    </div>
+                </div>
+                <div class="icon-input-container">
+                    {{form_row(formView.lastname)}}
+                    <ion-icon name="checkmark-circle-outline" class="input-success-icon"></ion-icon>
+                    <ion-icon name="alert-circle-outline" class="input-alert-icon"></ion-icon>
+                    <div class="input-error-msg">
+                        Votre nom doit contenir au moins 2 caractères
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="icon-input-container">
+                    {{form_row(formView.email)}}
+                    <ion-icon name="checkmark-circle-outline" class="input-success-icon"></ion-icon>
+                    <ion-icon name="alert-circle-outline" class="input-alert-icon"></ion-icon>
+                    <div class="input-error-msg">
+                        Renseignez un email valide
+                    </div>
+                </div>
+                <div class="icon-password-container">
+                    {{form_row(formView.password)}}
+                    <ion-icon name="checkmark-circle-outline" class="password-success-icon-first"></ion-icon>
+                    <ion-icon name="alert-circle-outline" class="password-alert-icon-first"></ion-icon>
+                    <ion-icon name="checkmark-circle-outline" class="password-success-icon-second"></ion-icon>
+                    <ion-icon name="alert-circle-outline" class="password-alert-icon-second"></ion-icon>
+                    <div class="password-info-msg">
+                        <ion-icon name="information-circle-outline" class="password-info-icon margin-right-xs"></ion-icon>
+                        <p class="password-info-text">Votre mot de passe doit contenir au moins 11 caractères dont un caractère spécial et deux chiffres</p>
+                    </div>
+                </div>
+                <div class="password-lines">
+                    <div class="first-line"><span>Faible</span></div>
+                    <div class="second-line"><span>Moyen</span></div>
+                    <div class="third-line"><span>Fort</span></div>
+                </div>
+                <div class="form-check">
+                    {{form_widget(formView.isRgpd)}}
+                    {{form_label(formView.isRgpd)}}
+                    {{form_errors(formView.isRgpd)}}
+                    {{form_help(formView.isRgpd)}}
+                </div>
+            </div>
+            <div class="form-footer">
+                <button class="btn btn--form" type="submit">S'inscrire</button>
+            </div>
+            {{form_end(formView)}}
+        </div>
+    </section>
+
+    {# Lien vers les scripts javascript #}
+  {% block javascripts %}
+    {# Register #}
+    <script src="{{ asset('js/register.js') }}"></script>
+  {% endblock %}
+
+{% endblock %}
