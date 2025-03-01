@@ -629,8 +629,15 @@ a:active {
 }
 
 /* Texte d'aide de champ de formulaire */
-.help-text {
+.form-help-text {
   font-size: 1.6rem;
+}
+
+/* Texte d'information de champ de formulaire */
+.form-info-text {
+  font-size: 1.6rem;
+  color: var(--color-main-text);
+  margin-bottom: 4rem;
 }
 
 /* Message d'erreur de champ de formulaire */

@@ -5,11 +5,11 @@
 {% block body %}
     
     <section class="section-login">
-        <div class="login-container form-wrap">
+        <div class="login-container form-wrap shake">
             <div class="form-header">
                 <h1 class="heading-primary">Se connecter</h1>
             </div> 
-            <p class="authentification-text">
+            <p class="form-info-text">
                 Saisir vos identifiants de connexion pour vous authentifier ...
             </p> 
             {# Message d'erreur d'authentification #}
@@ -38,7 +38,7 @@
                 <li class="authentification-list">
                     <ion-icon class="icon icon-secondary" name="help-outline"></ion-icon>
                     <span>
-                        <a href="#">Mot de passe oublié ?</a>
+                        <a href="{{path('app_forgotten_password')}}">Mot de passe oublié ?</a>
                     </span>
                 </li>
                 {# Pas encore de compte #}

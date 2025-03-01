@@ -2,5 +2,5 @@
  
 <h1>Activation de votre compte</h1>
 <p>Bonjour <strong>{{user.firstname}} {{user.lastname|upper}}</strong>. Vous avez créé un compte sur notre site, veuillez cliquer sur le lien ci-dessous pour l'activer.</p>
-{# Lien vers la route d'activation avec une url absolue avec le token en paramètre #}
+{# Lien vers la route d'activation avec une url absolue et le token en paramètre #}
 <p><a href="{{ absolute_url(path('app_register_activation', {'activationToken': activationToken})) }}">Activer mon compte</a></p>
