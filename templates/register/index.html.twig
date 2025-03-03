@@ -65,6 +65,17 @@
             </div>
             {{form_end(formView)}}
         </div>
+        <div class="form-footer">
+            <ul class="nav-list">
+                {# Formulaire de login #}
+                <li class="item-list">
+                    <ion-icon class="icon icon-secondary" name="help-outline"></ion-icon>
+                    <span>
+                        <a href="{{path('app_login')}}">Vous avez déjà un compte ?</a>
+                    </span>
+                </li>
+            </ul>
+        </div>
     </section>
 
     {# Lien vers les scripts javascript #}

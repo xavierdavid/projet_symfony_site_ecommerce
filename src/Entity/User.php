@@ -63,6 +63,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $resetToken = null;
 
+    #[ORM\Column(length: 255, nullable:true)]
+    private ?string $temporaryEmail = null;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
@@ -208,6 +211,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setResetToken(?string $resetToken): static
     {
         $this->resetToken = $resetToken;
+
+        return $this;
+    }
+
+    public function getTemporaryEmail(): ?string
+    {
+        return $this->temporaryEmail;
+    }
+
+    public function setTemporaryEmail(?string $temporaryEmail): self
+    {
+        $this->temporaryEmail = $temporaryEmail;
 
         return $this;
     }

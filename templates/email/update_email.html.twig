@@ -1,0 +1,7 @@
+{# Email de vérification d'email #}
+
+<h1>Vérification de votre nouvelle adresse email</h1>
+<p>Bonjour <strong>{{user.firstname}} {{user.lastname|upper}}</strong>. Vous avez effectué une demande de modification de l'adresse email associée à votre compte. Veuillez cliquer sur le lien ci-dessous pour finaliser votre demande :</p>
+<p><a href="{{absolute_url(path('app_account_reset_email', {'resetToken': resetToken}))}}">Vérifier ma nouvelle adresse email</a></p>
+
+   

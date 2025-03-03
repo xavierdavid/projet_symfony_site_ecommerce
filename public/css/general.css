@@ -414,6 +414,39 @@ a:active {
 }
 
 /*****************************************************/
+/***                      LIST                     ***/
+/*****************************************************/
+
+/* Liste de navigation */
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.item-list {
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1.2rem;
+}
+
+.item-list a:link,
+.item-list a:visited {
+  font-weight: 500;
+  font-size: 1.6rem;
+  transition: all 0.3s;
+  color: var(--color-white);
+}
+
+.item-list a:hover,
+.item-list a:active {
+  color: var(--color-accent-lighter);
+}
+
+/*****************************************************/
 /***                      ICONS                    ***/
 /*****************************************************/
 .icon {
@@ -1080,7 +1113,7 @@ nav .pagination {
   width: 85rem;
   border-radius: 9px;
   padding: 4.8rem;
-  margin: auto;
+  margin: 0 auto 3.2rem auto;
 }
 
 .icon-input-container,
@@ -1206,7 +1239,7 @@ nav .pagination {
 /*****************************************************/
 .section-login {
   padding: 9.6rem 0;
-  /* Register background image */
+  /* Login background image */
   background-image: var(--gradient-overlay),url("../img/hero.jpg");
   background-size: cover;
   color: var(--color-white);
@@ -1221,32 +1254,44 @@ nav .pagination {
     margin: 0 auto 3.2rem auto;
   }
 
-  .authentification-nav-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-  
-  .authentification-list {
-    font-size: 1.6rem;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    margin-top: 1.2rem;
-  }
-  
-  .authentification-list a:link,
-  .authentification-list a:visited {
-    font-weight: 500;
-    font-size: 1.6rem;
-    transition: all 0.3s;
-    color: var(--color-white);
-  }
-  
-  .authentification-list a:hover,
-  .authentification-list a:active {
-    color: var(--color-accent-lighter);
-  }
-  
+/*****************************************************/
+/***                     ACCOUNT                   ***/
+/*****************************************************/
+.section-account {
+  display: flex;
+  flex-direction: column;
+  padding: 9.6rem 0;
+  /* Affichage sur 100% de la fenêtre du navigateur */
+  height: 100vh;
+  /* Account background image */
+  background-image: url("../img/account-background.jpg");
+  background-size: cover;
+}
+
+.account-container {
+  margin: 0 auto;
+  width: 85rem;
+}
+
+.account-title {
+  text-align: center;
+}
+
+.account-description {
+  font-size: 2rem;
+  line-height: 1.6;
+  margin-bottom: 3.2rem;
+}
+
+.account-nav .item-list a:link,
+.account-nav .item-list a:visited {
+  color: var(--color-main-darker);
+}
+
+.account-nav .item-list a:hover,
+.account-nav .item-list a:active {
+  color: var(--color-accent-darker);
+}
+
+
 

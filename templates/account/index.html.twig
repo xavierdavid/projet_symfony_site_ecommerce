@@ -4,7 +4,35 @@
 
 {% block body %}
 
-   <h1>Mon compte</h1>
+  <section class="section-account">
+    <div class="account-container">
+      <h1 class="account-title heading-primary">Mon compte</h2>
+      <p class="account-description">Bonjour <strong>{{app.user.firstname}},</strong> bienvenue dans votre espace client.</p>
+      <div class="account-nav">
+        <ul class="nav-list">
+            {# Formulaire de login #}
+            <li class="item-list">
+              <ion-icon class="icon icon-secondary" name="key-outline"></ion-icon>
+              <span>
+                  <a href="{{path('app_login')}}">Modifier mon mot de passe</a>
+              </span>
+            </li>
+            <li class="item-list">
+              <ion-icon class="icon icon-secondary" name="send-outline"></ion-icon>
+              <span>
+                  <a href="{{path('app_account_update_email')}}">Modifier mon email</a>
+              </span>
+            </li>
+            <li class="item-list">
+              <ion-icon class="icon icon-secondary" name="log-out-outline"></ion-icon>
+              <span>
+                  <a href="{{path('app_logout')}}">Me déconnecter</a>
+              </span>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
 {% endblock %}
 

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Connexion{% endblock %}
 
 {% block body %}
     
@@ -33,16 +33,16 @@
             </form>
         </div>
         <div class="form-footer">
-            <ul class="authentification-nav-list">
+            <ul class="nav-list">
                 {# Mot de passe oublié #}
-                <li class="authentification-list">
+                <li class="item-list">
                     <ion-icon class="icon icon-secondary" name="help-outline"></ion-icon>
                     <span>
                         <a href="{{path('app_forgotten_password')}}">Mot de passe oublié ?</a>
                     </span>
                 </li>
                 {# Pas encore de compte #}
-                <li class="authentification-list">
+                <li class="item-list">
                     <ion-icon class="icon icon-secondary" name="person-add-outline"></ion-icon>
                     <span>
                         <a href="{{path('app_register')}}">Pas encore de compte ?</a>
