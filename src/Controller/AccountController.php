@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Services\SendEmail;
 use App\Form\UpdateEmailType;
+use App\Form\UpdatePasswordType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AccountController extends AbstractController
 {
@@ -33,6 +35,52 @@ class AccountController extends AbstractController
     {
         return $this->render('account/index.html.twig', [
             
+        ]);
+    }
+
+    /**
+     * Contrôle l'affichage et le traitement du formulaire de modification du mot de passe de l'utilisateur
+     *
+     * @param Request $request
+     * @return Response
+     */
+    #[Route('/account/update_password', name:'app_account_update_password')]
+    public function updatePassword(Request $request, UserPasswordHasherInterface $userPasswordHasherInterface): Response
+    {
+        // Récupération de l'objet User authentifié
+        $user = $this->getUser();
+        // Création du formulaire de modification du mot de passe de l'utilisateur
+        $form = $this->createForm(UpdatePasswordType::class, $user);
+        // Récupération des données du formulaire via la requête
+        $form->handleRequest($request);
+        // Vérification des données (soumission et validité)
+        if($form->isSubmitted() && $form->isValid()) {
+            // Récupération de l'ancien mot de passe saisi par l'utilisateur dans le formulaire
+            $oldPassword = $form->get('old_password')->getData();
+            // Vérification si le mot de passe actuel saisi par l'utilisateur dans le formulaire est identique au mot de passe haché stocké dans la base de données
+            if($userPasswordHasherInterface->isPasswordValid($user, $oldPassword)) {
+                // Récupération du nouveau mot de passe saisi
+                $newPassword = $form->get('new_password')->getData();
+                // Hachage du nouveau mot de passe
+                $password = $userPasswordHasherInterface->hashPassword($user, $newPassword);
+                // Affectation du nouveau mot de passe haché à l'objet User
+                $user->setPassword($password);
+                // Envoi en base de données
+                $this->entityManagerInterface->persist($user);
+                $this->entityManagerInterface->flush();
+                // Message flash et redirection
+                $this->addFlash("success", "Votre mot de passe a été modifié avec succès !");
+                return $this->redirectToRoute(('app_account'));
+            } else {
+                // Message flash et redirection en cas d'échec
+                $this->addFlash("danger", "Désolé, aucun utilisateur n'existe avec ce mot de passe !");
+                return $this->redirectToRoute(('app_account_update_password'));
+            }
+        }
+        $formView = $form->createView();
+        return $this->render('/account/update_password.html.twig', [
+            'formView' => $formView,
+            'user' => $user
         ]);
     }
 

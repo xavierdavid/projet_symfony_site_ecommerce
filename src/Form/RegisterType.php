@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class RegisterType extends AbstractType
 {
@@ -64,10 +65,13 @@ class RegisterType extends AbstractType
                     'message' => 'Entrer un mot de passe SVP',
                 ]),
                 new Length([
-                    'min' => 6,
-                    'minMessage' => 'Votre mot de passe doit comporter au minimum {{ limit }} caractères',
                     // max length allowed by Symfony for security reasons
                     'max' => 4096
+                ]),
+                new Regex([
+                    // 2 chiffres et un caractère spécial
+                    'pattern' => '/^(?=.*\d.*\d)(?=.*[\W_]).{11,}$/',
+                    'message' => 'Le mot de passe doit contenir au moins 11 caractères, dont 2 chiffres et 1 caractère spécial.',
                 ]),
             ],
         ])

@@ -822,8 +822,11 @@ nav .pagination {
   justify-content: space-between;
   align-items: center;
   background-color: var(--color-main-tint);
-  height: 9.6rem; /* Fixed for sticky header */
   padding: 0 4.8rem;
+  height: 9.6rem; /* Fixed for sticky header */
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .section-logo {
